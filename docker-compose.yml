@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    build: ./angular-app
+    ports:
+    - "8000:80"
+    links:
+    - node
+    command: "npm install"
+    volumes:
+    - "/angular/angular-app/dist/out:/usr/share/nginx/html"
+  node:
+    build: ./node-app
+    ports:
+    - "3000:3000"
+    links:
+    - mongo
+  mongo:
+    image: mongo
+    ports: 
+    - "27017:27017"
