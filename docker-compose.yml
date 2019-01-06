@@ -1,16 +1,20 @@
 version: '3'
 services:
   web:
-    build: ./angular-app
+    build: 
+      context: ./angular-app
+      dockerfile: Dockerfile
     ports:
     - "8000:80"
     links:
     - node
-    command: "npm install"
+#    command: "cd ./angular-app && npm install"
     volumes:
     - "/angular/angular-app/dist/out:/usr/share/nginx/html"
   node:
-    build: ./node-app
+    build: 
+      context: ./node-service
+      dockerfile: Dockerfile
     ports:
     - "3000:3000"
     links:
