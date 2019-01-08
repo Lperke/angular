@@ -1,2 +1,3 @@
 # angular
-test angular with docker
+angular proj + node and mongo
+packed with docker
